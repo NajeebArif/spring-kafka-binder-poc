@@ -1,0 +1,25 @@
+
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      group-id: najeeb
+  cloud:
+    function:
+      definition: processInput;process
+    stream:
+      bindings:
+        process-in-0:
+          content-type: application/json
+          destination: input-test-topic
+        process-out-0:
+          content-type: application/json
+          destination: output-test-topic
+        processInput-in-0:
+          content-type: application/json
+          destination: input-test-topic
+
+test:
+  topic: embedded-test-topic
+  inputTopic: input-test-topic
+  outputTopic: output-test-topic
